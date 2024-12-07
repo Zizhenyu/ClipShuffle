@@ -1,0 +1,7 @@
+1. Connection between users (connect workspace to another user)
+2. User verification (Check user password and username)
+3. User creation (Add record)
+4. Concurrent editing (Concurrently update workspace file without conflicts)
+5. Workspace Saving (as a JSON object)
+6. Uploading files and instructions from client to server
+7. Verify Autosaving (do the function that does the saving)
