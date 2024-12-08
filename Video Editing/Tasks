@@ -2,3 +2,7 @@
 2. Write the file, byte by byte. to a current user's folder. If not logged in, place in temp foler.
 3. Whichever oder the videos are in, according to the user, pass those in order in an API call in the script.
 4. Pass the link to the user-end.
+
+
+Sources:
+https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Java-File-Upload-Servlet-Ajax-Example
