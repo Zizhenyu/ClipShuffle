@@ -17,12 +17,12 @@ body {
 	display: flex;
 	align-items: center;
 	background-color: rgba(0, 0, 0, 0);
-	border-radius: 10px;
+	border-radius: 20px;
 	width: 400px;
 	height: auto;
 	backdrop-filter: blur(20px);
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: center;
 }
 
 #userimage {
