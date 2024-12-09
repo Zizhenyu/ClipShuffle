@@ -35,7 +35,7 @@ public class ClearUploadServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().write("Files cleared successfully.");
         } else {
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
             response.getWriter().write("Failed to clear files.");
         }
     }
