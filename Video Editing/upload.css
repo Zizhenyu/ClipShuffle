@@ -63,5 +63,10 @@ button.delete:hover {
 }
 
 #videoTable {
-	margin-bottom: 20px;
+	width: 100%;
+    border: 1px solid;
+}
+#videoTable tr, th, td{
+    border: 1px solid;
+  	align-content:center;
 }
