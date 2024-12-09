@@ -10,7 +10,7 @@ Now the Video_editing is able to:
 message: Video already exists
 4. if not exist, upload it to temp folder, 
 message: Video uploaded: /ClipShuffle/temp/(filename)
-5. Add a row of the Video Table, with id and filename
+5. Add a new row of the Video Table, with id and filename
 (not tested with the logged in user)
 
 
