@@ -29,9 +29,6 @@ public class VideoUploadSerlvet extends HttpServlet {
         // HttpSession session = request.getSession();
         // todo:
         int userId = -1;
-        // BufferedReader reader = request.getReader();
-        // JsonObject jsonObject = new Gson().fromJson(reader, JsonObject.class);
-        // int userId = jsonObject.get("userId").getAsInt();
         
         // Determine the folder for saving the file
         String uploadPath;
