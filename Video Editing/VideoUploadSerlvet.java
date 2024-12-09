@@ -7,26 +7,32 @@ import javax.servlet.*;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+//
+//import com.google.gson.Gson;
+//import com.google.gson.JsonObject;
 
 @MultipartConfig(
-    fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-    maxFileSize = 1024 * 1024 * 50,      // 50MB
-    maxRequestSize = 1024 * 1024 * 100   // 100MB
+	    fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+	    maxFileSize = 1024 * 1024 * 50,      // 50MB
+	    maxRequestSize = 1024 * 1024 * 100   // 100MB
 )
 
 @WebServlet("/uploadVideo")
 public class VideoUploadSerlvet extends HttpServlet {
     private static final String TEMP_DIR = "temp";
     private static final String UPLOAD_DIR = "uploads";
-    
+    private static final String TXT_FILE_NAME = "videoList.txt";
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Check if user is logged in
         // HttpSession session = request.getSession();
         // todo:
         int userId = -1;
-        // String username = (String) session.getAttribute("username");
-
+        // BufferedReader reader = request.getReader();
+        // JsonObject jsonObject = new Gson().fromJson(reader, JsonObject.class);
+        // int userId = jsonObject.get("userId").getAsInt();
+        
         // Determine the folder for saving the file
         String uploadPath;
         if (userId >= 0) {
@@ -50,6 +56,7 @@ public class VideoUploadSerlvet extends HttpServlet {
         for (Part part : request.getParts()) {
             String fileName = extractFileName(part);
             if (fileName != null && !fileName.isEmpty()) {
+            	
                 String filePath = uploadPath + File.separator + fileName;
                 // check if the file already existed inside the directory
                 boolean isFileExists = new File(uploadPath, fileName).exists();
@@ -63,7 +70,37 @@ public class VideoUploadSerlvet extends HttpServlet {
                 } else { // file not inside the directory
                     part.write(filePath);
                     System.out.println("File written to: " + filePath);
-                   
+                    
+                    // store the file path for future ffmpeg usage
+                    File txt = new File(uploadPath, TXT_FILE_NAME);
+                    FileWriter fw = null;
+                    BufferedWriter bw = null;
+                    try {
+                        fw = new FileWriter(txt, true);
+                        bw = new BufferedWriter(fw);
+                        // write into the file
+                    	String content = "file " + filePath;
+                    	bw.write(content);
+                    	bw.newLine();
+                    	
+                    	System.out.println("Added to videoList.txt: " + content);
+                	} catch (IOException e) {
+                		e.printStackTrace();
+                		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                		response.getWriter().write("Failed to update text file.");
+            		} finally {
+            		    try {
+            		        if (bw != null) {
+            		            bw.close();
+            		        }
+            		        if (fw != null) {
+            		            fw.close();
+            		        }
+            		    } catch (IOException e) {
+            		        e.printStackTrace();
+            		    }
+            		}
+           
                     // Generate a link to the uploaded file
                     String fileLink = request.getContextPath() + "/" + (userId >= 0 ? UPLOAD_DIR + "/" + userId : TEMP_DIR) + "/" + fileName;
 
