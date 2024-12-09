@@ -1,8 +1,3 @@
-1. Upload a video, and pass it to the backend.
-2. Write the file, byte by byte. to a current user's folder. If not logged in, place in temp foler.
-3. Whichever oder the videos are in, according to the user, pass those in order in an API call in the script.
-4. Pass the link to the user-end.
-
 Now the Video_editing is able to:
 1. guest user upload a video file from their directory
 2. program checks whether the file exists in the temp folder
@@ -25,6 +20,10 @@ Websites to get sample videos:
 https://www.pexels.com/search/videos/sample/
 
 
+1. Upload a video, and pass it to the backend.
+2. Write the file, byte by byte. to a current user's folder. If not logged in, place in temp foler.
+3. Whichever oder the videos are in, according to the user, pass those in order in an API call in the script.
+4. Pass the link to the user-end.
 
 Merge Videos from local folder
 https://superuser.com/questions/1332169/ffmpeg-batch-merge-videos-within-a-folder
