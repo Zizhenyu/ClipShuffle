@@ -79,7 +79,7 @@ public class VideoUploadSerlvet extends HttpServlet {
                         fw = new FileWriter(txt, true);
                         bw = new BufferedWriter(fw);
                         // write into the file
-                    	String content = "file " + filePath;
+                    	String content = "file " + filePath + "'";
                     	bw.write(content);
                     	bw.newLine();
                     	
